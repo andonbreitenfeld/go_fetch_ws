@@ -1,7 +1,8 @@
 # go_fetch_ws
 CLA Course Project
 
-This repository is a complete ROS 2 workspace for the "Go Fetch!" demo on NRG's B3V0 robot platform.  
+This repository is a complete ROS 2 workspace for the "Go Fetch!" demo on NRG's B3V0 robot platform.
+
 It is intended to run on a shared robot environment where all required ROS 2 and system dependencies are already installed.  
 
 For this demo, Spot will navigate between predefined waypoints, autonomously grasp balls, and deposit them into a designated collection bin.  
