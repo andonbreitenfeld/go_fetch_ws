@@ -1,0 +1,20 @@
+# ROS2 workspace ignores
+build/
+install/
+log/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Colcon metadata
+.colcon/
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# Misc editor files
+*.swp
+*.swo
+.DS_Store
