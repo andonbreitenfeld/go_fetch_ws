@@ -47,20 +47,30 @@ Currently the demo is split into 2 unintegrated parts: single task autonomous ma
 To launch the autonomous surveying workflow, open **5 separate terminals** and run:
 
 `ros2 launch spot_tennis_demo demo_bringup.launch.py`
+
 `ros2 launch spot_navigation bringup_launch.py`
+
 `cd src/spot_tennis_demo/docker`
+
 `docker compose up yolo`
+
 `ros2 launch spot_tennis_demo decision.launch.py`
+
 `ros2 run tennis_demo_behaviorized run_tennis_tree`
 
+
 ### Part 2: Single Task Manipulation
+
 To launch the autonomous manipulation workflow, open **5 separate terminals** and run:
 
 `ros2 launch spot_tennis_demo demo_bringup.launch.py`
-`ros2 launch spot_navigation bringup_launch.py`
-`cd src/spot_tennis_demo/docker`
-`docker compose up yolo`
-`ros2 launch spot_tennis_demo decision.launch.py`
-`Clara stuff`
 
-`
+`ros2 launch spot_navigation bringup_launch.py`
+
+`cd src/spot_tennis_demo/docker`
+
+`docker compose up yolo`
+
+`ros2 launch spot_tennis_demo decision.launch.py`
+
+`Clara stuff`
