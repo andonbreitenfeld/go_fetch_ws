@@ -14,7 +14,7 @@ Additionally, the user must have access to the Docker daemon on the B3V0 machine
 
 ## Clone
 
-git clone --recursive git@github.com:andonbreitenfeld/go_fetch_ws.git  
+git clone --recursive `git@github.com:andonbreitenfeld/go_fetch_ws.git`
 cd go_fetch_ws
 
 If you forgot to clone recursively:
