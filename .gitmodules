@@ -1,0 +1,20 @@
+[submodule "src/spot_manipulation"]
+	path = src/spot_manipulation
+	url = git@github.com:UTNuclearRoboticsPublic/spot_manipulation.git
+	branch = devel
+[submodule "src/spot_ros"]
+	path = src/spot_ros
+	url = git@github.com:UTNuclearRoboticsPublic/spot_ros.git
+	branch = devel
+[submodule "src/yolo_ros"]
+	path = src/yolo_ros
+	url = git@github.com:mgonzs13/yolo_ros.git
+[submodule "src/tennis_demo_behaviorized"]
+	path = src/tennis_demo_behaviorized
+	url = git@github.com:andonbreitenfeld/tennis_demo_behaviorized.git
+[submodule "src/spot_tennis_demo"]
+	path = src/spot_tennis_demo
+	url = git@github.com:andonbreitenfeld/spot_tennis_demo.git
+[submodule "src/spot_arm_control"]
+	path = src/spot_arm_control
+	url = git@github.com:clara-summerford/spot_arm_control.git
