@@ -3,9 +3,10 @@ CLA Course Project
 
 This repository is a complete ROS 2 workspace for the "Go Fetch!" demo on NRG's B3V0 robot platform.
 
-It is intended to run on a shared robot environment where all required ROS 2 and system dependencies are already installed.  
-
 For this demo, Spot will navigate between predefined waypoints, autonomously grasp balls, and deposit them into a designated collection bin.  
+
+## Requirements
+It is intended to run on a shared robot environment where all required ROS 2 and system dependencies are already installed.  
 
 It is expected that the AprilTag-tagged blue bin is visible to Spot’s left-side camera after undocking, and that no obstacles are blocking the waypoints next to the glovebox.
 
@@ -25,4 +26,9 @@ git submodule update --init --recursive
 colcon build  
 source install/setup.bash
 
-You must run **colcon build** after cloning the repository for the demo to function correctly.
+## Environment Variable
+
+Before running the demo, ensure the following variable is added to your bashrc:
+
+echo 'export SPOT_ACCESSORIES="ARM RL_KIT"' >> ~/.bashrc  
+source ~/.bashrc
