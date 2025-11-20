@@ -14,21 +14,21 @@ Additionally, the user must have access to the Docker daemon on the B3V0 machine
 
 ## Clone
 
-`git clone --recursive git@github.com:andonbreitenfeld/go_fetch_ws.git
-cd go_fetch_ws`
+`git clone --recursive git@github.com:andonbreitenfeld/go_fetch_ws.git`
+`cd go_fetch_ws`
 
 If you forgot to clone recursively:
 
-git submodule update --init --recursive
+`git submodule update --init --recursive`
 
 ## Build
 
-colcon build  
-source install/setup.bash
+`colcon build`
+`source install/setup.bash`
 
 ## Environment Variable
 
 Before running the demo, ensure the following variable is added to your bashrc:
 
-echo 'export SPOT_ACCESSORIES="ARM RL_KIT"' >> ~/.bashrc  
-source ~/.bashrc
+`echo 'export SPOT_ACCESSORIES="ARM RL_KIT"' >> ~/.bashrc`
+`source ~/.bashrc`
