@@ -1,5 +1,6 @@
 # go_fetch_ws
-**ADD ALL REQUIRED PACKAGES**
+**ADD ALL REQUIRED PACKAGES ANDON READ THIS!!!**
+
 CLA Course Project
 
 This repository is a complete ROS 2 workspace for the "Go Fetch!" demo on NRG's B3V0 robot platform.
@@ -52,7 +53,7 @@ source ~/.bashrc
 
 ### Launch Sequence
 
-Open **5 separate terminals** and run the following commands in order:
+Open **6 separate terminals** and run the following commands in order:
 
 #### Terminal 1: Spot Drivers & Core Systems
 ```bash
@@ -64,20 +65,23 @@ ros2 launch spot_tennis_demo demo_bringup.launch.py
 ros2 launch spot_navigation bringup_launch.py
 ```
 
-### ADD MOVE GROUP STUFF CLARA PLEASE
+#### Terminal 3: Manipulation Stack
+```bash
+ros2 launch spot_moveit_config move_group.launch.py
+```
 
-#### Terminal 3: YOLO Detection (Docker)
+#### Terminal 4: YOLO Detection (Docker)
 ```bash
 cd src/spot_tennis_demo/docker
 docker compose up yolo
 ```
 
-#### Terminal 4: Perception Pipeline
+#### Terminal 5: Perception Pipeline
 ```bash
 ros2 launch spot_tennis_demo perception.launch.py
 ```
 
-#### Terminal 5: Behavior Tree
+#### Terminal 6: Behavior Tree
 ```bash
 ros2 run tennis_demo_behaviorized run_tennis_tree
 ```
