@@ -15,6 +15,3 @@
 [submodule "src/spot_tennis_demo"]
 	path = src/spot_tennis_demo
 	url = git@github.com:andonbreitenfeld/spot_tennis_demo.git
-[submodule "src/spot_arm_control"]
-	path = src/spot_arm_control
-	url = git@github.com:clara-summerford/spot_arm_control.git
