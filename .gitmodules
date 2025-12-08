@@ -9,9 +9,12 @@
 [submodule "src/yolo_ros"]
 	path = src/yolo_ros
 	url = git@github.com:mgonzs13/yolo_ros.git
+        branch = main
 [submodule "src/tennis_demo_behaviorized"]
 	path = src/tennis_demo_behaviorized
 	url = git@github.com:andonbreitenfeld/tennis_demo_behaviorized.git
+        branch = main
 [submodule "src/spot_tennis_demo"]
 	path = src/spot_tennis_demo
 	url = git@github.com:andonbreitenfeld/spot_tennis_demo.git
+        branch = main
