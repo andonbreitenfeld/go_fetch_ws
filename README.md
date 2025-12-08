@@ -3,74 +3,107 @@ CLA Course Project
 
 This repository is a complete ROS 2 workspace for the "Go Fetch!" demo on NRG's B3V0 robot platform.
 
-For this demo, Spot will navigate between predefined waypoints, autonomously grasp balls, and deposit them into a designated collection bin.  
+For this demo, Spot will navigate between predefined waypoints, autonomously detect and grasp tennis balls, and deposit them into a designated AprilTag-marked collection bin.
 
-Custom repositories inside src:
-- spot_tennis_demo -> object localization & navigation  
-- spot_arm_control -> manipulation  
-- tennis_demo_behaviorized -> behavior tree (BT)
+The full integrated demo combines autonomous navigation, ball detection, approach planning, and manipulation into a single behavior tree workflow.
+
+## Repository Structure
+
+Custom repositories inside `src/`:
+- **spot_tennis_demo** → Launch files, YOLO detection, and perception pipeline
+- **tennis_demo_behaviorized** → Behavior tree logic, navigation decisions, and manipulation sequencing
 
 ## Requirements
-It is intended to run on a shared robot environment where all required ROS 2 and system dependencies are already installed.  
 
-It is expected that the AprilTag-tagged blue bin is visible to Spot’s left-side camera after undocking, and that no obstacles are blocking the waypoints next to the glovebox.
-
-Additionally, the user must have access to the Docker daemon on the B3V0 machine.
+- Intended to run on B3V0 shared robot environment
+- User must have access to the Docker daemon on the B3V0 machine
+- AprilTag-tagged bin must be visible to Spot's left after undocking (can be changed by editing Waypoint A)
+- Waypoints B & C must be obstacle-free (set near the Glovebox)
 
 ## Clone
 
-`git clone --recursive git@github.com:andonbreitenfeld/go_fetch_ws.git`
-`cd go_fetch_ws`
+```bash
+git clone --recursive git@github.com:andonbreitenfeld/go_fetch_ws.git
+cd go_fetch_ws
+```
 
 If you forgot to clone recursively:
-
-`git submodule update --init --recursive`
+```bash
+git submodule update --init --recursive
+```
 
 ## Build
 
-`colcon build`
-`source install/setup.bash`
+```bash
+colcon build
+source install/setup.bash
+```
 
 ## Environment Variable
 
 Before running the demo, ensure the following variable is added to your bashrc:
 
-`echo 'export SPOT_ACCESSORIES="ARM RL_KIT"' >> ~/.bashrc`
-`source ~/.bashrc`
+```bash
+echo 'export SPOT_ACCESSORIES="ARM RL_KIT"' >> ~/.bashrc
+source ~/.bashrc
+```
 
-## Running Demo
+### Launch Sequence
 
-Currently the demo is split into 2 unintegrated parts: single task autonomous manipulation and continous surveying. Future efforts will be made to combine into 1 cohesive demo (ie behavior tree doesn't include manipulation yet).
+Open **5 separate terminals** and run the following commands in order:
 
-### Part 1: Surveying Using a Behavior Tree
+#### Terminal 1: Spot Drivers & Core Systems
+```bash
+ros2 launch spot_tennis_demo demo_bringup.launch.py
+```
 
-To launch the autonomous surveying workflow, open **5 separate terminals** and run:
+#### Terminal 2: Navigation Stack
+```bash
+ros2 launch spot_navigation bringup_launch.py
+```
 
-`ros2 launch spot_tennis_demo demo_bringup.launch.py`
+### ADD MOVE GROUP STUFF CLARA PLEASE
 
-`ros2 launch spot_navigation bringup_launch.py`
+#### Terminal 3: YOLO Detection (Docker)
+```bash
+cd src/spot_tennis_demo/docker
+docker compose up yolo
+```
 
-`cd src/spot_tennis_demo/docker`
+#### Terminal 4: Perception Pipeline
+```bash
+ros2 launch spot_tennis_demo perception.launch.py
+```
 
-`docker compose up yolo`
+#### Terminal 5: Behavior Tree
+```bash
+ros2 run tennis_demo_behaviorized run_tennis_tree
+```
 
-`ros2 launch spot_tennis_demo decision.launch.py`
+### What Happens
 
-`ros2 run tennis_demo_behaviorized run_tennis_tree`
+1. **Startup**: Spot claims, powers on, undocks, and navigates to startup position
+2. **Bin Localization**: Continuously attempts to locate the AprilTag bin until successful
+3. **Patrol & Monitor**: Cycles between waypoints while monitoring for stable ball detections
+4. **Fetch Sequence**: Upon detecting a ball:
+   - Computes approach goal and navigates to it
+   - Executes grasp sequence
+   - Returns to bin and deposits ball
+5. **Resume Patrol**: Returns to waypoint cycling until next ball is detected
 
+### System Architecture
 
-### Part 2: Single Task Manipulation
+- **Perception**: YOLO 3D detections → Custom BallSelector filter node → Stable Ball Pose
+- **Planning**: Custom ComputeApproachGoal behaviors for ball & bin
+- **Navigation**: Used premade WalkToPose behavior for precise positioning
+- **Manipulation**: Custom PickBall and DropBall behaviors
 
-To launch the autonomous manipulation workflow, open **5 separate terminals** and run:
+## License
 
-`ros2 launch spot_tennis_demo demo_bringup.launch.py`
+MIT
 
-`ros2 launch spot_navigation bringup_launch.py`
+## Authors
 
-`cd src/spot_tennis_demo/docker`
-
-`docker compose up yolo`
-
-`ros2 launch spot_tennis_demo decision.launch.py`
-
-`Clara stuff`
+- Andon Breitenfeld
+- Clara Summerford
+- Luke Pronga
