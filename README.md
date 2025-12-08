@@ -1,4 +1,5 @@
 # go_fetch_ws
+**ADD ALL REQUIRED PACKAGES**
 CLA Course Project
 
 This repository is a complete ROS 2 workspace for the "Go Fetch!" demo on NRG's B3V0 robot platform.
