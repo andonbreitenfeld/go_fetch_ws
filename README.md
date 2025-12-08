@@ -35,6 +35,7 @@ git submodule update --init --recursive
 ## Build
 
 ```bash
+cd go_fetch_ws
 colcon build
 source install/setup.bash
 ```
