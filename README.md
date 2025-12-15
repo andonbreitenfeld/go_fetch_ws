@@ -1,5 +1,4 @@
 # go_fetch_ws
-**ADD ALL REQUIRED PACKAGES ANDON READ THIS!!!**
 
 CLA Course Project
 
